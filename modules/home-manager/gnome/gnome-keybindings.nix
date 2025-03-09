@@ -66,6 +66,8 @@ with lib; let
     // (customKeybindingsConf custom);
 in {
   options.custom.programs.gnome-keybindings = {
+    enable = mkEnableOption "GNOME Keybindings management";
+
     media = mkOption {
       type = with types; attrsOf (listOf str);
       default = {};
@@ -91,5 +93,7 @@ in {
     };
   };
 
-  config = {dconf.settings = mkGnomeKeybindings cfg;};
+  config = mkIf cfg.enable {
+    dconf.settings = mkGnomeKeybindings cfg;
+  };
 }
