@@ -28,6 +28,11 @@
       default = tisnix;
     };
 
+    darwinModules = rec {
+      tisnix = import ./modules/darwin;
+      default = tisnix;
+    };
+
     packages = flake-utils.lib.eachDefaultSystemPassThrough (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in {
