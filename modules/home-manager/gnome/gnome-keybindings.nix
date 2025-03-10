@@ -53,6 +53,7 @@ with lib; let
     windowManager ? {},
     mutter ? {},
     custom ? {},
+    ...
   }:
     {
       "${keybindingPath.windowManager}" = windowManager;
