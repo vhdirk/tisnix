@@ -14,6 +14,7 @@
   pam,
   libxslt,
   perl,
+  nss,
   libpam-wrapper,
 }:
 stdenv.mkDerivation rec {
@@ -35,6 +36,7 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
+    cmake
     glib
     libfprint
     polkit
@@ -44,6 +46,7 @@ stdenv.mkDerivation rec {
     libxslt
     perl # for pod2man
     libpam-wrapper
+    nss
   ];
 
   env = {

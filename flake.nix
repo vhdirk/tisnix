@@ -46,7 +46,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       "${system}".default = pkgs.mkShell {
-        packages = with pkgs; [just sops];
+        packages = with pkgs; [go-task just sops];
       };
     });
   };
