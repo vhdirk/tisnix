@@ -9,10 +9,10 @@ stdenv.mkDerivation rec {
   version = "0.1.0";
 
   src = fetchFromGitHub {
-    owner = "romkatv";
+    owner = "vhdirk";
     repo = "zsh4humans";
     rev = "v5";
-    hash = "sha256-ftfB0dcxO5K04v5rkvDcJMgQ2cMN5He7S23ByWNX3/U=";
+    hash = "sha256-ie8amOuQGzvPgoldcKbgKH1SozyiIzOECPyjWh6E358=";
   };
 
   dontBuild = true;
