@@ -1,4 +1,4 @@
-{final, prev, ...}: {
+{final, prev, ...} @inputs: {
   ## packages
   pam-any = prev.callPackage ./pam-any {};
   pam-random = prev.callPackage ./pam-random {};
@@ -10,8 +10,6 @@
 
   zsh4humans = prev.callPackage ./zsh4humans {};
 
-  uniffi-bindgen = prev.callPackage ./uniffi-bindgen {};
-
 
   ## overrides
 
@@ -20,7 +18,8 @@
   # // import ./gnome-shell-extensions {inherit prev final;};
 
   # libfprint = import ./libfprint-cs9711 {inherit prev final; };
+  gnome-keyring = import ./gnome-keyring inputs;
 
-  # gnome-keyring = import ./gnome-keyring  {inherit prev final; };
+  # fluxcd = import ./fluxcd inputs;
 
 }
