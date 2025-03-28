@@ -7,7 +7,8 @@
     ...
   }: let
     packages = import ./packages;
-    overlay = final: prev: packages {inherit final prev;};
+
+    overlay = final: prev: packages {inherit final prev;} // { lib = prev.lib // import ./lib { lib = prev.lib;}; };
   in {
     formatter = flake-utils.lib.eachDefaultSystemPassThrough (system: {
       "${system}" = {pkgs}: pkgs.alejandra;
