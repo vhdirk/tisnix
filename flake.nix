@@ -8,6 +8,7 @@
   }: let
     packages = import ./packages;
 
+    # TODO: lib doesn't actually seem to work
     overlay = final: prev: packages {inherit final prev;} // { lib = prev.lib // import ./lib { lib = prev.lib;}; };
   in {
     formatter = flake-utils.lib.eachDefaultSystemPassThrough (system: {
