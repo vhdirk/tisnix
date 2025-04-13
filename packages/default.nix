@@ -1,14 +1,14 @@
-{final, prev, ...} @inputs: {
+{pkgs, ...} @inputs: {
   ## packages
-  pam-any = prev.callPackage ./pam-any {};
-  pam-random = prev.callPackage ./pam-random {};
-  pam-fprint-grosshack = prev.callPackage ./pam-fprint-grosshack {};
+  pam-any = pkgs.callPackage ./pam-any {};
+  pam-random = pkgs.callPackage ./pam-random {};
+  pam-fprint-grosshack = pkgs.callPackage ./pam-fprint-grosshack {};
 
-  spotify-adblock = prev.callPackage ./spotify-adblock {};
+  spotify-adblock = pkgs.callPackage ./spotify-adblock {};
 
-  linux-dynamic-wallpapers = prev.callPackage ./linux-dynamic-wallpapers {};
+  linux-dynamic-wallpapers = pkgs.callPackage ./linux-dynamic-wallpapers {};
 
-  zsh4humans = prev.callPackage ./zsh4humans {};
+  zsh4humans = pkgs.callPackage ./zsh4humans {};
 
 
   ## overrides

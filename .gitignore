@@ -1,4 +1,5 @@
 result
 .direnv
+.devenv
 
 .decrypted~*.yaml

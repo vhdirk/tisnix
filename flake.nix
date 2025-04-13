@@ -3,65 +3,77 @@
 
   outputs = {
     nixpkgs,
-    flake-utils,
+    flake-parts,
+    devenv,
     ...
-  }: let
-    packages = import ./packages;
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} (top @ {
+      config,
+      withSystem,
+      moduleWithSystem,
+      ...
+    }: {
+      imports = [
+        flake-parts.flakeModules.easyOverlay
+        devenv.flakeModule
+      ];
 
-    # TODO: lib doesn't actually seem to work
-    overlay = final: prev: packages {inherit final prev;} // { lib = prev.lib // import ./lib { lib = prev.lib;}; };
-  in {
-    formatter = flake-utils.lib.eachDefaultSystemPassThrough (system: {
-      "${system}" = {pkgs}: pkgs.alejandra;
-    });
+      flake = {
+        homeManagerModules = rec {
+          tisnix = import ./modules/home-manager;
+          default = tisnix;
+        };
 
-    overlays = {
-      default = overlay;
-      tisnix = overlay;
-    };
+        nixosModules = rec {
+          tisnix = import ./modules/nixos;
+          default = tisnix;
+        };
 
-    homeManagerModules = rec {
-      tisnix = import ./modules/home-manager;
-      default = tisnix;
-    };
+        darwinModules = rec {
+          tisnix = import ./modules/darwin;
+          default = tisnix;
+        };
+      };
 
-    nixosModules = rec {
-      tisnix = import ./modules/nixos;
-      default = tisnix;
-    };
+      systems = nixpkgs.lib.systems.flakeExposed;
 
-    darwinModules = rec {
-      tisnix = import ./modules/darwin;
-      default = tisnix;
-    };
+      perSystem = {
+        config,
+        pkgs,
+        ...
+      }: {
+        overlayAttrs = {
+          inherit (config.packages) pam-any pam-random pam-fprint-grosshack spotify-adblock linux-dynamic-wallpapers zsh4humans;
+        };
 
-    packages = flake-utils.lib.eachDefaultSystemPassThrough (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      "${system}" = packages {
-        final = pkgs;
-        prev = pkgs;
+        formatter = pkgs.alejandra;
+
+        packages = import ./packages {inherit pkgs;};
+        # packages.pam-any = pkgs.callPackage ./pam-any {};
+        # packages.pam-random = pkgs.callPackage ./pam-random {};
+        # packages.pam-fprint-grosshack = pkgs.callPackage ./pam-fprint-grosshack {};
+
+        # packages.spotify-adblock = pkgs.callPackage ./spotify-adblock {};
+
+        # packages.linux-dynamic-wallpapers = pkgs.callPackage ./linux-dynamic-wallpapers {};
+
+        # packages.zsh4humans = pkgs.callPackage ./zsh4humans {};
+
+        devenv.shells.default = {
+          packages = with pkgs; [go-task just];
+        };
       };
     });
-
-    devShells = flake-utils.lib.eachDefaultSystemPassThrough (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      "${system}".default = pkgs.mkShell {
-        packages = with pkgs; [go-task just];
-      };
-    });
-  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # add git hooks to format nix code before commit
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
     };
 
-    flake-utils = {url = "github:numtide/flake-utils";};
+    devenv = {
+      url = "github:cachix/devenv";
+    };
   };
 }
