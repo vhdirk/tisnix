@@ -7,7 +7,7 @@
     devenv,
     ...
   } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} (top @ {
+    flake-parts.lib.mkFlake {inherit inputs;} ({
       config,
       withSystem,
       moduleWithSystem,
@@ -49,24 +49,16 @@
         formatter = pkgs.alejandra;
 
         packages = import ./packages {inherit pkgs;};
-        # packages.pam-any = pkgs.callPackage ./pam-any {};
-        # packages.pam-random = pkgs.callPackage ./pam-random {};
-        # packages.pam-fprint-grosshack = pkgs.callPackage ./pam-fprint-grosshack {};
-
-        # packages.spotify-adblock = pkgs.callPackage ./spotify-adblock {};
-
-        # packages.linux-dynamic-wallpapers = pkgs.callPackage ./linux-dynamic-wallpapers {};
-
-        # packages.zsh4humans = pkgs.callPackage ./zsh4humans {};
 
         devenv.shells.default = {
-          packages = with pkgs; [go-task just];
         };
       };
     });
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
