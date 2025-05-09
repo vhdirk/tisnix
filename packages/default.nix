@@ -18,8 +18,8 @@
   # // import ./gnome-shell-extensions {inherit prev final;};
 
   # libfprint = import ./libfprint-cs9711 {inherit prev final; };
-  gnome-keyring = import ./gnome-keyring inputs;
+  # gnome-keyring = import ./gnome-keyring inputs;
 
-  # fluxcd = import ./fluxcd inputs;
-
+  franz = pkgs.callPackage ./franz {};
+  ferdium = pkgs.callPackage ./ferdium {};
 }
