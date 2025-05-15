@@ -19,7 +19,4 @@
 
   # libfprint = import ./libfprint-cs9711 {inherit prev final; };
   # gnome-keyring = import ./gnome-keyring inputs;
-
-  franz = pkgs.callPackage ./franz {};
-  ferdium = pkgs.callPackage ./ferdium {};
 }
