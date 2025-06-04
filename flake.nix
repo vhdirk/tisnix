@@ -43,7 +43,7 @@
         ...
       }: {
         overlayAttrs = {
-          inherit (config.packages) pam-any pam-random pam-fprint-grosshack spotify-adblock linux-dynamic-wallpapers zsh4humans;
+          inherit (config.packages) pam-any pam-random pam-fprint-grosshack spotify-adblock linux-dynamic-wallpapers zsh4humans tp_smapi;
         };
 
         formatter = pkgs.alejandra;
