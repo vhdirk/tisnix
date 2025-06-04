@@ -11,12 +11,5 @@
   zsh4humans = pkgs.callPackage ./zsh4humans {};
 
 
-  ## overrides
-
-  # gnomeExtensions =
-  # prev.gnomeExtensions
-  # // import ./gnome-shell-extensions {inherit prev final;};
-
-  # libfprint = import ./libfprint-cs9711 {inherit prev final; };
-  # gnome-keyring = import ./gnome-keyring inputs;
+  tp_smapi = pkgs.callPackage ./tp_smapi {};
 }
