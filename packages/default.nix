@@ -9,7 +9,4 @@
   linux-dynamic-wallpapers = pkgs.callPackage ./linux-dynamic-wallpapers {};
 
   zsh4humans = pkgs.callPackage ./zsh4humans {};
-
-
-  tp_smapi = pkgs.callPackage ./tp_smapi {};
 }
