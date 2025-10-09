@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     owner = "romkatv";
     repo = "zsh4humans";
     rev = "v5";
-    hash = "sha256-6YI0ZtVMLlnw2x9MOkkBtdkvQErqnnoL8VyB12cOwZk=";
+    hash = "sha256-OMpcDS8S6OTVe7sC4iQ3LMpwNx2tcCBGBnORwL3ix6w=";
   };
 
   dontBuild = true;
