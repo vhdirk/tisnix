@@ -11,8 +11,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "romkatv";
     repo = "zsh4humans";
-    rev = "v5";
-    hash = "sha256-OMpcDS8S6OTVe7sC4iQ3LMpwNx2tcCBGBnORwL3ix6w=";
+    rev = "c0c29f9";
+    hash = "sha256-yha/ITOHDlAZDg1GHjLeeK10UCtwmhTeDkXQaANrF78=";
   };
 
   dontBuild = true;
