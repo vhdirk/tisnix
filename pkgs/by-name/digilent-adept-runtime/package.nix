@@ -37,31 +37,31 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    # Libraries
     mkdir -p $out/lib/digilent/adept
     cp -r usr/lib/digilent/adept/*.so* $out/lib/
 
-    # udev helper binary
     mkdir -p $out/lib/udev
     cp usr/lib/udev/dftdrvdtch $out/lib/udev/
 
-    # Data files (firmware, maps, etc.)
     mkdir -p $out/share/digilent
     cp -r usr/share/digilent/adept $out/share/digilent/
 
-    # Docs
     mkdir -p $out/share/doc
     cp -r usr/share/doc/digilent.adept.runtime $out/share/doc/
 
-    # Config file
     mkdir -p $out/etc
     cp etc/digilent-adept.conf $out/etc/
+
+    mkdir -p $out/lib/udev/rules.d
+    cp etc/udev/rules.d/52-digilent-usb.rules $out/lib/udev/rules.d/
+
   '';
 
   postFixup = ''
     chmod -x $out/share/digilent/adept/data/firmware/*.so || true
     patchelf --set-rpath "$out/lib/digilent/adept" $out/lib/udev/dftdrvdtch || true
   '';
+
 
   meta = with lib; {
     description = "Digilent Adept Runtime - USB device communication libraries";
