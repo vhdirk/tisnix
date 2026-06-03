@@ -17,7 +17,7 @@ stdenv.mkDerivation {
   dontBuild = true;
 
   installPhase = ''
-\    mkdir -p $out/share
+    mkdir -p $out/share
     cp -r $src $out/share/zsh4humans
   '';
 
