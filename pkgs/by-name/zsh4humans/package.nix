@@ -1,10 +1,9 @@
 {
   lib,
   stdenv,
-  pkg-config,
   fetchFromGitHub,
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "zsh4humans";
   version = "5.0.0";
 
@@ -18,15 +17,14 @@ stdenv.mkDerivation rec {
   dontBuild = true;
 
   installPhase = ''
-    # Create the output directory
-    mkdir -p $out/share
+\    mkdir -p $out/share
     cp -r $src $out/share/zsh4humans
   '';
 
   meta = with lib; {
     description = "Zsh for Humans";
     homepage = "https://github.com/romkatv/zsh4humans/";
-    license = licenses.mit; # Adjust the license accordingly
+    license = licenses.mit;
     platforms = platforms.unix;
     maintainers = [
       # add yourself
