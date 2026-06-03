@@ -20,7 +20,6 @@
           pkgs-by-name-for-flake-parts.flakeModule
           devenv.flakeModule
           treefmt-nix.flakeModule
-
         ];
 
         flake = {
@@ -48,12 +47,9 @@
 
         perSystem =
           {
-            pkgs,
             ...
           }:
           {
-            formatter = pkgs.nixfmt;
-
             pkgsDirectory = pkgs/by-name;
 
             treefmt = {
