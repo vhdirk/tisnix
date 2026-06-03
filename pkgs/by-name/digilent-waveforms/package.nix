@@ -33,14 +33,12 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
     libusb1
     avahi
-
     qt6.qtbase
     qt6.qtwayland
     qt6.qtmultimedia
     qt6.qtdeclarative
     qt6.qtnetworkauth
     qt6.qtserialport
-
     digilent-adept-runtime
   ];
 
@@ -49,35 +47,28 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    # Binaries
     mkdir -p $out/bin
     cp usr/bin/waveforms $out/bin/
     cp usr/bin/dwfcmd $out/bin/
 
-    # The main shared library + headers
     mkdir -p $out/lib
     cp usr/lib/libdwf.so* $out/lib/
 
     mkdir -p $out/include/digilent/waveforms
     cp usr/include/digilent/waveforms/dwf.h $out/include/digilent/waveforms/
 
-    # Data: firmware, docs, samples, pixmaps, lang
     mkdir -p $out/share/digilent
     cp -r usr/share/digilent/waveforms $out/share/digilent/
 
-    # Desktop entry
     mkdir -p $out/share/applications
     cp usr/share/applications/digilent.waveforms.desktop $out/share/applications/
 
-    # Man pages
     mkdir -p $out/share/man/man1
     cp usr/share/man/man1/*.gz $out/share/man/man1/
 
-    # MIME types
     mkdir -p $out/share/mime/packages
     cp usr/share/mime/packages/digilent.waveforms.xml $out/share/mime/packages/
 
-    # Docs
     mkdir -p $out/share/doc
     cp -r usr/share/doc/digilent.waveforms $out/share/doc/
   '';

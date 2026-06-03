@@ -54,13 +54,19 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/lib/udev/rules.d
     cp etc/udev/rules.d/52-digilent-usb.rules $out/lib/udev/rules.d/
+  '';
 
+  postInstall = ''
+    substituteInPlace $out/lib/udev/rules.d/52-digilent-usb.rules \
+      --replace "dftdrvdtch" "$out/lib/udev/dftdrvdtch"
   '';
 
   postFixup = ''
     chmod -x $out/share/digilent/adept/data/firmware/*.so || true
     patchelf --set-rpath "$out/lib/digilent/adept" $out/lib/udev/dftdrvdtch || true
   '';
+
+
 
 
   meta = with lib; {
