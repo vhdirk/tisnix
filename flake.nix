@@ -40,7 +40,7 @@
 
           overlays.default = _final: prev: {
             local = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
-          } // withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
+          };
         };
 
         # systems = nixpkgs.lib.systems.flakeExposed;
