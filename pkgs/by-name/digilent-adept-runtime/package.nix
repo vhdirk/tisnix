@@ -54,6 +54,8 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/lib/udev/rules.d
     cp etc/udev/rules.d/52-digilent-usb.rules $out/lib/udev/rules.d/
+
+    runHook postInstall
   '';
 
   postInstall = ''
