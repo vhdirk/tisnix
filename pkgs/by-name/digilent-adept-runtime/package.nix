@@ -58,16 +58,13 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     substituteInPlace $out/lib/udev/rules.d/52-digilent-usb.rules \
-      --replace "dftdrvdtch" "$out/lib/udev/dftdrvdtch"
+      --replace 'RUN+="dftdrvdtch' 'RUN+="'"$out"'/lib/udev/dftdrvdtch'
   '';
 
   postFixup = ''
     chmod -x $out/share/digilent/adept/data/firmware/*.so || true
     patchelf --set-rpath "$out/lib/digilent/adept" $out/lib/udev/dftdrvdtch || true
   '';
-
-
-
 
   meta = with lib; {
     description = "Digilent Adept Runtime - USB device communication libraries";
