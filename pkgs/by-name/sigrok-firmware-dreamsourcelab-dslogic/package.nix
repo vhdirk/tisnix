@@ -1,11 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 pkgs.stdenv.mkDerivation {
   name = "sigrok-firmware-dreamsourcelab-dslogic";
   src = pkgs.fetchFromGitHub {
     owner = "DreamSourceLab";
     repo = "DSView";
     rev = "2e9e2c8e726df4ef5687d39b83d4f797cc44b574";
-    sha256 = lib.fakeHash;
+    sha256 = "sha256-F7T3wEasIzfhQXVaU8MVo06h3RB1nhWxkp2sUb8Ct80=";
   };
   installPhase = ''
     mkdir -p $out/share/sigrok-firmware
