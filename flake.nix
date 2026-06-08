@@ -41,6 +41,7 @@
           overlays.default = _final: prev: {
             local = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
           };
+
         };
 
         # systems = nixpkgs.lib.systems.flakeExposed;
@@ -50,7 +51,7 @@
             ...
           }:
           {
-            pkgsDirectory = pkgs/by-name;
+            pkgsDirectory = ./packages;
 
             treefmt = {
               projectRootFile = "flake.nix";

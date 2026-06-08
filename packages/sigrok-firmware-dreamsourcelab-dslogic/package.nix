@@ -4,7 +4,7 @@ pkgs.stdenv.mkDerivation {
   src = pkgs.fetchFromGitHub {
     owner = "DreamSourceLab";
     repo = "DSView";
-    rev = "2e9e2c8e726df4ef5687d39b83d4f797cc44b574";
+    rev = "886b847c21c606df3138ce7ad8f8e8c363ee758b";
     sha256 = "sha256-F7T3wEasIzfhQXVaU8MVo06h3RB1nhWxkp2sUb8Ct80=";
   };
   installPhase = ''
