@@ -38,8 +38,16 @@
             default = tisnix;
           };
 
-          overlays.default = _final: prev: {
+          overlays.default = final: prev: {
             local = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
+            libsigrok = prev.libsigrok.overrideAttrs (old: {
+              src = final.fetchFromGitHub {
+                owner = "huehuehuehueing";
+                repo = "libsigrok";
+                rev = "11bf53b39154b5ed035181c7b8017e5146a1e73e";
+                hash = "sha256-u94VDwYZw8K+QLaSGgY7nSbefQy/ESZ3hvR3GCO66EM=";
+              };
+            });
           };
 
         };

@@ -12,25 +12,25 @@ pkgs.stdenv.mkDerivation {
     cd DSView
 
     # DSLogic
-    cp res/DSLogic50.bin      $out/share/sigrok-firmware/dreamsourcelab-dslogic-fpga-5v.fw
-    cp res/DSLogic33.bin      $out/share/sigrok-firmware/dreamsourcelab-dslogic-fpga-3v3.fw
-    cp res/DSLogic.fw         $out/share/sigrok-firmware/dreamsourcelab-dslogic-fx2.fw
+    cp res/DSLogic50.bin  $out/share/sigrok-firmware/dreamsourcelab-dslogic-fpga-5v.fw
+    cp res/DSLogic33.bin  $out/share/sigrok-firmware/dreamsourcelab-dslogic-fpga-3v3.fw
+    cp res/DSLogic.fw     $out/share/sigrok-firmware/dreamsourcelab-dslogic-fx2.fw
 
     # DScope
-    cp res/DSCope.bin 	      $out/share/sigrok-firmware/dreamsourcelab-dscope-fpga.fw
-    cp res/DSCope.fw 	        $out/share/sigrok-firmware/dreamsourcelab-dscope-fx2.fw
+    cp res/DSCope.bin $out/share/sigrok-firmware/dreamsourcelab-dscope-fpga.fw
+    cp res/DSCope.fw  $out/share/sigrok-firmware/dreamsourcelab-dscope-fx2.fw
 
     # DSLogic Pro
-    cp res/DSLogicPro.bin 	  $out/share/sigrok-firmware/dreamsourcelab-dslogic-pro-fpga.fw
-    cp res/DSLogicPro.fw 	    $out/share/sigrok-firmware/dreamsourcelab-dslogic-pro-fx2.fw
+    cp res/DSLogicPro.bin $out/share/sigrok-firmware/dreamsourcelab-dslogic-pro-fpga.fw
+    cp res/DSLogicPro.fw  $out/share/sigrok-firmware/dreamsourcelab-dslogic-pro-fx2.fw
 
     # DSLogic Plus
-    cp res/DSLogicPlus.bin  	$out/share/sigrok-firmware/dreamsourcelab-dslogic-plus-fpga.fw
-    cp res/DSLogicPlus.fw 	  $out/share/sigrok-firmware/dreamsourcelab-dslogic-plus-fx2.fw
+    cp res/DSLogicPlus-pgl12-2.bin  $out/share/sigrok-firmware/dreamsourcelab-dslogic-plus-fpga.fw
+    cp res/DSLogicPlus.fw 	        $out/share/sigrok-firmware/dreamsourcelab-dslogic-plus-fx2.fw
 
     # DSLogic Basic
-    cp res/DSLogicBasic.bin 	$out/share/sigrok-firmware/dreamsourcelab-dslogic-basic-fpga.fw
-    cp res/DSLogicBasic.fw 	  $out/share/sigrok-firmware/dreamsourcelab-dslogic-basic-fx2.fw
+    cp res/DSLogicBasic.bin $out/share/sigrok-firmware/dreamsourcelab-dslogic-basic-fpga.fw
+    cp res/DSLogicBasic.fw  $out/share/sigrok-firmware/dreamsourcelab-dslogic-basic-fx2.fw
 
     mkdir -p $out/lib/udev/rules.d
     cp DreamSourceLab.rules $out/lib/udev/rules.d/
