@@ -30,7 +30,7 @@ pkgs.stdenv.mkDerivation {
 
     # DSLogic Basic
     cp res/DSLogicBasic.bin $out/share/sigrok-firmware/dreamsourcelab-dslogic-basic-fpga.fw
-    cp res/DSLogicBasic.fw  $out/share/sigrok-firmware/dreamsourcelab-dslogic-basic-fx2.fw
+    # cp res/DSLogicBasic.fw  $out/share/sigrok-firmware/dreamsourcelab-dslogic-basic-fx2.fw
 
     mkdir -p $out/lib/udev/rules.d
     cp DreamSourceLab.rules $out/lib/udev/rules.d/
