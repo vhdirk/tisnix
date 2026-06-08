@@ -26,7 +26,7 @@ pkgs.stdenv.mkDerivation {
 
     # DSLogic Plus
     cp res/DSLogicPlus-pgl12-2.bin  $out/share/sigrok-firmware/dreamsourcelab-dslogic-plus-fpga.fw
-    cp res/DSLogicPlus.fw 	        $out/share/sigrok-firmware/dreamsourcelab-dslogic-plus-fx2.fw
+    # cp res/DSLogicPlus.fw 	        $out/share/sigrok-firmware/dreamsourcelab-dslogic-plus-fx2.fw
 
     # DSLogic Basic
     cp res/DSLogicBasic.bin $out/share/sigrok-firmware/dreamsourcelab-dslogic-basic-fpga.fw
