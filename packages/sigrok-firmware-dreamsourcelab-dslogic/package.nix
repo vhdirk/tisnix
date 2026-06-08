@@ -5,7 +5,7 @@ pkgs.stdenv.mkDerivation {
     owner = "DreamSourceLab";
     repo = "DSView";
     rev = "886b847c21c606df3138ce7ad8f8e8c363ee758b";
-    sha256 = "sha256-F7T3wEasIzfhQXVaU8MVo06h3RB1nhWxkp2sUb8Ct80=";
+    sha256 = "sha256-2+me0YvPB8Qmg/pFrW2xkh2BDZ/b8GFS8UWJmt5OVUI=";
   };
   installPhase = ''
     mkdir -p $out/share/sigrok-firmware
