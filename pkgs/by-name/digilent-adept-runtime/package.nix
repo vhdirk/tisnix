@@ -32,6 +32,8 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
+  dontAutoPatchelf = true;
+
   unpackPhase = ''
     rpm2cpio ${src} | cpio -idmv
   '';
