@@ -9,7 +9,7 @@ pkgs.stdenv.mkDerivation {
   };
   installPhase = ''
     mkdir -p $out/share/sigrok-firmware
-    cd DSView/res
+    cd DSView
 
     # DSLogic
     cp res/DSLogic50.bin      $out/share/sigrok-firmware/dreamsourcelab-dslogic-fpga-5v.fw
