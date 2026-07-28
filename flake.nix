@@ -39,7 +39,7 @@
           };
 
           overlays.default = final: prev: {
-            local = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
+            tisnix = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
             libsigrok = prev.libsigrok.overrideAttrs (old: {
               src = final.fetchFromGitHub {
                 owner="vhdirk";
