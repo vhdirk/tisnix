@@ -11,7 +11,7 @@ buildNpmPackage rec {
   # 1. Grab the scoped pre-built tarball from the NPM registry
   src = fetchurl {
     url = "https://registry.npmjs.org/@microsoft/${pname}/-/${pname}-${version}.tgz";
-    hash = lib.fakeHash;
+    hash = "sha256-LRzi3fxzQPB5kLNLFLyRPTzPP1DEPgqevukyzgWRn5s=";
   };
 
   # 2. Fetch the exact lockfile for this version from GitHub
