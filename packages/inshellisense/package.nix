@@ -17,7 +17,7 @@ buildNpmPackage rec {
   # 2. Fetch the exact lockfile for this version from GitHub
   lockfile = fetchurl {
     url = "https://raw.githubusercontent.com/microsoft/inshellisense/${version}/package-lock.json";
-    hash = lib.fakeHash;
+    hash = "sha256-y4yepN5Kgf2Ms2mq90so7kmoE0YZTcHUMBDZ0YAlu70=";
   };
 
   # 3. Inject the lockfile into the unpacked source before the NPM hook runs
