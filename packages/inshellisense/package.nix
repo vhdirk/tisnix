@@ -26,7 +26,7 @@ buildNpmPackage rec {
   '';
 
   # Replace this with the actual deps hash after your first build attempt
-  npmDepsHash = lib.fakeHash;
+  npmDepsHash = "sha256-670oGCuZhDLKe48hFL+gLMjmHM5YLGEawonG8PZTXpU=";
 
   # 4. Skip the build step since the NPM release is already transpiled JS
   dontNpmBuild = true;
