@@ -38,22 +38,22 @@
             default = tisnix;
           };
 
-          overlays.default = final: prev: {
-            tisnix = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
-            libsigrok = prev.libsigrok.overrideAttrs (old: {
-              src = final.fetchFromGitHub {
-                owner="vhdirk";
-                repo="libsigrok";
-                rev="a9f23e9f5234aa62c776fdc43367dc03c2d9bc08";
-                hash="sha256-bKMxwH1G8y5r94L38RfUPMDZRcYhNrH6r/DGWuXGIPo=";
-
+          overlays = rec {
+            default =
+              final: prev:
+              let
+                localPackages = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
+              in
+              localPackages
+              // {
+                tisnix = localPackages;
               };
-            });
+            tisnix = default;
           };
 
         };
 
-        # systems = nixpkgs.lib.systems.flakeExposed;
+        systems = nixpkgs.lib.systems.flakeExposed;
 
         perSystem =
           {
