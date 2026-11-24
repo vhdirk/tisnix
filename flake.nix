@@ -41,13 +41,17 @@
           overlays = rec {
             default =
               final: prev:
-              let
-                localPackages = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
-              in
-              localPackages
-              // {
-                tisnix = localPackages;
-              };
+              nixpkgs.lib.optionalAttrs
+                (builtins.hasAttr prev.stdenv.hostPlatform.system inputs.self.packages)
+                (
+                  let
+                    localPackages = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
+                  in
+                  localPackages
+                  // {
+                    tisnix = localPackages;
+                  }
+                );
             tisnix = default;
           };
 
