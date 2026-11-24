@@ -12,12 +12,12 @@
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } (
       {
-        withSystem,
         ...
       }:
       {
         imports = [
           pkgs-by-name-for-flake-parts.flakeModule
+          flake-parts.flakeModules.easyOverlay
           devenv.flakeModule
           treefmt-nix.flakeModule
         ];
@@ -39,36 +39,22 @@
           };
 
           overlays = rec {
-            default =
-              final: prev:
-              nixpkgs.lib.optionalAttrs
-                (builtins.hasAttr prev.stdenv.hostPlatform.system inputs.self.packages)
-                (
-                  let
-                    localPackages = withSystem prev.stdenv.hostPlatform.system ({ config, ... }: config.packages);
-                  in
-                  localPackages
-                  // {
-                    tisnix = localPackages;
-                  }
-                );
-            tisnix = default;
+            tisnix = inputs.self.overlays.default;
+            default = tisnix;
           };
 
         };
 
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-          "aarch64-darwin"
-        ];
+        systems = nixpkgs.lib.systems.flakeExposed;
 
         perSystem =
           {
+            config,
             ...
           }:
           {
             pkgsDirectory = ./packages;
+            overlayAttrs = config.legacyPackages;
 
             treefmt = {
               projectRootFile = "flake.nix";
