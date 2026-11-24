@@ -38,11 +38,7 @@
             default = tisnix;
           };
 
-          overlays = rec {
-            tisnix = inputs.self.overlays.default;
-            default = tisnix;
-          };
-
+          overlays.tisnix = inputs.self.overlays.default;
         };
 
         systems = nixpkgs.lib.systems.flakeExposed;
